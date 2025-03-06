@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+
+
+let tasks = []; 
+function addTask(task) {
+    if (task) {
+        tasks.push(task);
+    }
+}
+
+function removeTask(task) {
+    let index = tasks.indexOf(task);
+    if (index !== -1) {
+        tasks.splice(index, 1);
+    }
+}
+
+function displayTasks() {
+    if (tasks.length === 0) {
+        alert("No tasks available.");
+    } else {
+        let taskList = "Your Tasks:\n";
+        tasks.forEach((task, index) => {
+            taskList += `${index + 1}. ${task}\n`;
+        });
+        alert(taskList);
+    }
+}
+
+
+function runToDoList() {
+    let choice;
+    do {
+        choice = prompt("Choose an option:\n1. Add Task\n2. Remove Task\n3. View Tasks\n4. Exit");
+        switch (choice) {
+            case "1":
+                let newTask = prompt("Enter the task:");
+                addTask(newTask);
+                break;
+            case "2":
+                let taskToRemove = prompt("Enter the task to remove:");
+                removeTask(taskToRemove);
+                break;
+            case "3":
+                displayTasks();
+                break;
+            case "4":
+                alert("Exiting To-Do List.");
+                break;
+            default:
+                alert("Invalid choice! Please choose again.");
+        }
+    } while (choice !== "4");
+}
+
+runToDoList();
+
+
+
+    </script>
+</body>
+    
+</html>
